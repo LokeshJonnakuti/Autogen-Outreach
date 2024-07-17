@@ -67,7 +67,7 @@ def scrape_linkedin(linkedin_url:str):
     print('Fetching new json data... (updating local cache)')
     response = requests.get(api_endpoint,
                         params=params,
-                        headers=header_dic)
+                        headers=header_dic, timeout=60)
     
     new_data = {
         'linkedin_url': linkedin_url,
