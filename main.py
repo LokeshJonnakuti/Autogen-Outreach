@@ -1,4 +1,3 @@
-import requests
 import json
 import autogen
 from langchain.chat_models import ChatOpenAI
@@ -9,6 +8,7 @@ from utils import prompts
 import openai
 from dotenv import load_dotenv
 import os
+from security import safe_requests
 
 #get openai API keys
 load_dotenv()
@@ -65,7 +65,7 @@ def scrape_linkedin(linkedin_url:str):
     
     # If data not found in cache, make an API call
     print('Fetching new json data... (updating local cache)')
-    response = requests.get(api_endpoint,
+    response = safe_requests.get(api_endpoint,
                         params=params,
                         headers=header_dic)
     
